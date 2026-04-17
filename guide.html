@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>OS16 食用指南 | Color Archive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0c15;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #eef2ff;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(79, 70, 229, 0.2), transparent 60%),
+                        radial-gradient(circle at 85% 70%, rgba(6, 182, 212, 0.2), transparent 60%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* 返回按钮 */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            color: #eef2ff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* 卡片 */
+        .card {
+            background: rgba(18, 22, 35, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-left: 3px solid #8b5cf6;
+            padding-left: 0.8rem;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #c4b5fd;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .card ul, .card ol {
+            margin-left: 1.5rem;
+            color: #cbd5e6;
+        }
+
+        .card li {
+            margin: 0.5rem 0;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.3);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+        }
+
+        .warning {
+            background: rgba(245, 158, 11, 0.15);
+            border-left: 3px solid #f59e0b;
+            padding: 0.8rem 1rem;
+            border-radius: 0.8rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .success {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 3px solid #22c55e;
+            padding: 0.8rem 1rem;
+            border-radius: 0.8rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .qq-group {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(139, 92, 246, 0.2));
+            border: 1px solid rgba(139, 92, 246, 0.4);
+        }
+
+        .qq-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #c084fc;
+            letter-spacing: 2px;
+            margin: 0.5rem 0;
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            color: #eef2ff;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: rgba(139, 92, 246, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        hr {
+            border-color: rgba(255,255,255,0.05);
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 返回首页按钮 -->
+    <a href="index.html" class="back-btn">← 返回首页</a>
+
+    <!-- 标题 -->
+    <div class="card" style="text-align: center;">
+        <h1 style="font-size: 1.8rem; margin-bottom: 0.3rem;">🍽️ OS16 食用指南</h1>
+        <p style="color: #9ca3af;">三种刷入方式，按需选择</p>
+    </div>
+
+    <!-- 方式一 -->
+    <div class="card">
+        <h2>🔧 方式一：工具箱刷写</h2>
+        <p><span class="badge">需要准备</span> 一台电脑（尽量不要有杀毒软件）、一台手机、系统包、数据线</p>
+        <h3>📋 详细步骤：</h3>
+        <ol>
+            <li>系统包下载完成后<strong>解压</strong>。</li>
+            <li>电脑上打开<strong>可怜太可怜大佬的工具箱</strong>（密码自己在他的群里获取），<strong>关闭杀毒软件</strong>。</li>
+            <li>进入工具箱后，选择<strong>一或者三</strong>，然后根据自己情况选择是否观看教程。</li>
+            <li>选择解压后的文件夹（工具箱会自动解包），<strong>需要提前插线</strong>。</li>
+            <li>根据个人情况，选择<strong>是否清除数据</strong>。</li>
+        </ol>
+    </div>
+
+    <!-- 方式二 -->
+    <div class="card">
+        <h2>📲 方式二：TWRP/橙狐 卡刷 / ADB 侧载</h2>
+        <p><span class="badge">需要准备</span> 一台电脑、手机、TWRP/橙狐 img包、数据线、系统包、搞机助手/柚坛工具箱（本文以搞机助手为例）</p>
+        
+        <h3>📋 详细步骤：</h3>
+        <ol>
+            <li>数据线插入手机，打开<strong>搞机助手</strong>。</li>
+            <li>识别到手机后，将手机从系统重启至<strong>引导模式</strong>。</li>
+            <li>在搞机助手上切换到引导模式选项卡，选择<strong>临时刷入</strong> rec。</li>
+            <li>进入 rec 后，有两种刷入方式：</li>
+        </ol>
+        
+        <h3>🔹 第一种（ADB Sideload）：</h3>
+        <ol start="5">
+            <li>电脑上点击恢复模式选项卡，进入<strong>sideload刷机模式</strong>。</li>
+            <li>手机进入<strong>高级选项</strong> → 点击 <strong>adb sideload</strong>，滑动滑块，系统会自动刷入。</li>
+        </ol>
+        
+        <h3>🔸 第二种（手机存储卡刷）：</h3>
+        <ol start="5">
+            <li>系统包放入手机中。</li>
+            <li>进入<strong>安装</strong>选项卡，点击系统包后滑动滑块即可。</li>
+            <li>重启系统即可。</li>
+        </ol>
+        
+        <div class="warning">
+            ⚠️ <strong>注意</strong>：部分设备可能会报错，若报错请切换<strong>方式一</strong>刷写系统。<br>
+            ⚠️ 不建议使用 ColorOS 15.0.0.400 使用方式二刷入（可能有小 bug）。
+        </div>
+    </div>
+
+    <!-- 方式三 -->
+    <div class="card">
+        <h2>🔄 方式三：氧OS15 升级至 16</h2>
+        <p><span class="badge">需要准备</span> 系统包、手机</p>
+        <p><strong>适用条件：</strong> 手机在运行 <strong>氧OS 15.0.0.703 及以上系统</strong> 可以使用。</p>
+        <h3>📋 详细步骤：</h3>
+        <ol>
+            <li>进入手机 <strong>设置</strong> → <strong>系统更新</strong>。</li>
+            <li>点击右上角<strong>三个点</strong>，选择<strong>本地安装</strong>。</li>
+            <li>选择系统包，点击<strong>立即安装</strong>即可。</li>
+        </ol>
+        <div class="success">
+            💡 <strong>提示</strong>：如果没有「本地安装」选项，请打开<strong>开发者选项</strong>，即可恢复。
+        </div>
+    </div>
+
+    <!-- 注意事项 -->
+    <div class="card">
+        <h2>⚠️ 重要提示</h2>
+        <ul>
+            <li>本人所有提供系统包均<strong>免费</strong>，若存在收费内容，可能非本人所发，建议举报。</li>
+            <li>需要体验高版本系统、反馈 bug、本地化问题，可以加入群组，所有资源已上传完毕。</li>
+        </ul>
+    </div>
+
+    <!-- QQ 群 -->
+    <div class="card qq-group">
+        <h2 style="border-left: none; justify-content: center;">💬 加入群组</h2>
+        <p>反馈问题 · 获取资源 · 交流讨论</p>
+        <div class="qq-number">478538539</div>
+        <button class="copy-btn" onclick="copyQQ()">📋 复制群号</button>
+        <p style="font-size: 0.75rem; margin-top: 0.8rem; color: #9ca3af;">打开 QQ → 查找 → 输入群号 → 申请加入</p>
+    </div>
+
+    <footer>
+        Color Archive · OS16 食用指南 | 刷机有风险，操作需谨慎
+    </footer>
+</div>
+
+<script>
+    function copyQQ() {
+        const qq = "478538539";
+        navigator.clipboard.writeText(qq).then(() => {
+            alert("QQ群号已复制：" + qq);
+        }).catch(() => {
+            prompt("手动复制群号：", qq);
+        });
+    }
+</script>
+</body>
+</html>
