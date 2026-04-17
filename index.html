@@ -270,10 +270,29 @@
             border-color: #8b5cf6;
         }
 
-        .link-note {
-            font-size: 0.75rem;
-            color: #6c7293;
-            margin-top: 0.3rem;
+        /* QQ群卡片样式 */
+        .qq-card {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(139, 92, 246, 0.2));
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            border-radius: 1.2rem;
+            padding: 1.2rem;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .copy-qq-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            color: #eef2ff;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-qq-btn:hover {
+            background: rgba(139, 92, 246, 0.4);
         }
 
         footer {
@@ -305,7 +324,19 @@
             <a href="https://docs.qq.com/form/page/DUVFvS29PT05URXBN" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
                 📋 付费信息收集
             </a>
+            <a href="guide.html" class="btn btn-outline">
+                📖 OS16 食用指南
+            </a>
         </div>
+    </div>
+
+    <!-- QQ群组件（首页） -->
+    <div class="qq-card">
+        <div style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.3rem;">💬 加入交流群</div>
+        <div style="font-size: 0.8rem; color: #9ca3af; margin-bottom: 0.8rem;">反馈问题 · 获取资源 · 交流讨论</div>
+        <div style="font-size: 1.8rem; font-weight: 700; color: #c084fc; letter-spacing: 2px; margin: 0.5rem 0;">478538539</div>
+        <button class="copy-qq-btn" onclick="copyQQ()">📋 复制群号</button>
+        <div style="font-size: 0.7rem; margin-top: 0.6rem; color: #6c7293;">打开 QQ → 查找 → 输入群号 → 申请加入</div>
     </div>
 
     <!-- 前言 + 团队 -->
@@ -319,14 +350,14 @@
         </ul>
         <div class="qa-item" style="border-bottom: none; margin-bottom: 0;">
             <div class="qa-question">🧑‍🤝‍🧑 Color Archive 有团队支撑吗？</div>
-            <div class="qa-answer">9RT：3人（我、B.lu、nby）<br>GT/VS：不知道是不知道啊 B.lu（nby辅助，含技术支持）</div>
+            <div class="qa-answer">9RT：3人（我、B.lu、nby）<br>GT/VS：主要是我一人（其他2人辅助，含技术支持）</div>
         </div>
     </div>
 
-    <!-- 公益包下载（新增板块） -->
+    <!-- 公益包下载 -->
     <div class="card">
         <div class="section-title">🎁 公益包下载</div>
-        <p style="margin-bottom: 0.8rem;">免费公开版本，适用于以下机型：<strong>OnePlus 9RT / realme GT</strong> 等</p>
+        <p style="margin-bottom: 0.8rem;">免费公开版本，适用于以下机型：<strong>OnePlus 9RT / 9 / 9 Pro / 8 / 8 Pro / OPPO Find X3 / X3 Pro / realme GT</strong> 等</p>
         <div class="download-grid">
             <div class="download-card">
                 <div>🌐 海外镜像</div>
@@ -343,7 +374,7 @@
                 </a>
             </div>
         </div>
-        <div class="link-note" style="text-align: center; margin-top: 0.8rem;">
+        <div class="link-note" style="text-align: center; margin-top: 0.8rem; font-size: 0.75rem; color: #6c7293;">
             ⚡ 公益包为免费版本，付费版包含更多机型及后续更新权益
         </div>
     </div>
@@ -397,7 +428,7 @@
     <!-- FAQ 核心问题 -->
     <div class="card" id="faq">
         <div class="section-title">❓ 常见问题</div>
-        <div class="qa-item"><div class="qa-question">🔧 安装 Color Archive 会去除云控吗？</div><div class="qa-answer">ColorOS 云控策略比较分散，无法针对特定需求修改，保留云控有助于后续新功能适配。</div></div>
+        <div class="qa-item"><div class="qa-question">🔧 安装 Color Archive 会去除云控吗？</div><div class="qa-answer">ColorOS 云控策略集中且分散，无法针对特定需求修改，保留云控有助于后续新功能适配。</div></div>
         <div class="qa-item"><div class="qa-question">📦 镜像上传要求？TWRP 可刷？</div><div class="qa-answer">不可以。需要专用方式刷入。</div></div>
         <div class="qa-item"><div class="qa-question">⏳ 上车后多久收到包？发到哪里？</div><div class="qa-answer">时间不定，因网络原因可能提前或推迟。完成后通过填写的邮箱发送，请勿频繁催促。</div></div>
         <div class="qa-item"><div class="qa-question">🔄 后续能免费更新吗？</div><div class="qa-answer">可以。每个小版本（如 16.0.1 → 16.0.3）更新时需重新“上车”。</div></div>
@@ -454,5 +485,16 @@
         公益包免费下载，付费版含后续更新及技术支持 | 酷安：不知道是不知道啊
     </footer>
 </div>
+
+<script>
+function copyQQ() {
+    const qq = "478538539";
+    navigator.clipboard.writeText(qq).then(() => {
+        alert("QQ群号已复制：" + qq);
+    }).catch(() => {
+        prompt("手动复制群号：", qq);
+    });
+}
+</script>
 </body>
 </html>
