@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Color Archive | 移植·官改融合系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0c15;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #eef2ff;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(79, 70, 229, 0.2), transparent 60%),
+                        radial-gradient(circle at 85% 70%, rgba(6, 182, 212, 0.2), transparent 60%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(18, 22, 35, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 1rem 0 2rem;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #c084fc, #60a5fa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: inline-block;
+            padding-top: 0.8rem;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.75rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 500;
+            color: #eef2ff;
+            text-decoration: none;
+            transition: all 0.2s;
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(105deg, #4f46e5, #7c3aed);
+            border: none;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.02);
+            background: linear-gradient(105deg, #6366f1, #8b5cf6);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.5);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(139, 92, 246, 0.6);
+        }
+
+        .btn-success {
+            background: linear-gradient(105deg, #059669, #10b981);
+            border: none;
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(105deg, #10b981, #34d399);
+            transform: scale(1.02);
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-left: 4px solid #8b5cf6;
+            padding-left: 1rem;
+        }
+
+        .qa-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px dashed rgba(255,255,255,0.08);
+            padding-bottom: 1.2rem;
+        }
+
+        .qa-question {
+            font-weight: 600;
+            color: #c4b5fd;
+            margin-bottom: 0.4rem;
+            font-size: 1.05rem;
+        }
+
+        .qa-answer {
+            color: #d1d5db;
+            padding-left: 0.5rem;
+            border-left: 2px solid rgba(139, 92, 246, 0.4);
+        }
+
+        .price-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .price-card {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        .price-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f0abfc;
+            margin: 0.5rem 0;
+        }
+
+        .price-desc {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-top: 0.5rem;
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        .service-name {
+            color: #cbd5e6;
+        }
+
+        .service-price {
+            color: #f0abfc;
+            font-weight: 600;
+        }
+
+        .download-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .download-card {
+            flex: 1;
+            min-width: 180px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 1.2rem;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .device-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .device-tag {
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.5);
+            border-radius: 60px;
+            padding: 0.5rem 1.2rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .device-tag.support {
+            background: rgba(34, 197, 94, 0.15);
+            border-color: rgba(34, 197, 94, 0.5);
+            color: #4ade80;
+        }
+
+        .provide-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 1.2rem;
+            padding: 1.2rem;
+            margin-top: 1rem;
+            text-align: center;
+            border: 1px dashed rgba(255,255,255,0.2);
+        }
+
+        .provide-btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #c4b5fd;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .provide-btn:hover {
+            background: rgba(139, 92, 246, 0.3);
+            border-color: #8b5cf6;
+        }
+
+        .link-note {
+            font-size: 0.75rem;
+            color: #6c7293;
+            margin-top: 0.3rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            font-size: 0.8rem;
+            color: #6b7280;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 640px) {
+            .card { padding: 1.2rem; }
+            .section-title { font-size: 1.3rem; }
+            .logo { font-size: 2.2rem; }
+            .price-card, .download-card { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <div class="logo">Color Archive</div>
+        <div class="tagline">基于 ColorOS · realmeUI · OxygenOS 的移植与官改融合</div>
+        <div class="btn-group">
+            <a href="https://docs.qq.com/doc/DUVJLeGxEVXZ5Z2JW#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                📖 上车介绍 & 费用说明
+            </a>
+            <a href="https://docs.qq.com/form/page/DUVFvS29PT05URXBN" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                📋 付费信息收集
+            </a>
+        </div>
+    </div>
+
+    <!-- 前言 + 团队 -->
+    <div class="card">
+        <div class="section-title">📌 前言</div>
+        <ul style="margin-left: 1.5rem; color: #cbd5e6; margin-bottom: 1rem;">
+            <li>请先阅读本指南所有内容后再决定上车</li>
+            <li>文档会不定时持续更新，请多关注</li>
+            <li>仅针对 <strong>Color Archive</strong> 编写，请勿上错车</li>
+            <li>尊重原创，可通过左侧方式点赞/评论</li>
+        </ul>
+        <div class="qa-item" style="border-bottom: none; margin-bottom: 0;">
+            <div class="qa-question">🧑‍🤝‍🧑 Color Archive 有团队支撑吗？</div>
+            <div class="qa-answer">9RT：3人（我、B.lu、nby）<br>GT/VS：不知道是不知道啊 B.lu（nby辅助，含技术支持）</div>
+        </div>
+    </div>
+
+    <!-- 公益包下载（新增板块） -->
+    <div class="card">
+        <div class="section-title">🎁 公益包下载</div>
+        <p style="margin-bottom: 0.8rem;">免费公开版本，适用于以下机型：<strong>OnePlus 9RT / realme GT</strong> 等</p>
+        <div class="download-grid">
+            <div class="download-card">
+                <div>🌐 海外镜像</div>
+                <div style="font-size: 0.7rem; color: #9ca3af; margin: 0.3rem 0;">SourceForge</div>
+                <a href="https://sourceforge.net/projects/color/files/" target="_blank" rel="noopener noreferrer" class="btn btn-success" style="margin-top: 0.5rem; padding: 0.4rem 1rem; font-size: 0.85rem;">
+                    📥 前往下载
+                </a>
+            </div>
+            <div class="download-card">
+                <div>🇨🇳 国内镜像</div>
+                <div style="font-size: 0.7rem; color: #9ca3af; margin: 0.3rem 0;">123云盘</div>
+                <a href="https://www.123865.com/s/519Cvd-MPfKv" target="_blank" rel="noopener noreferrer" class="btn btn-success" style="margin-top: 0.5rem; padding: 0.4rem 1rem; font-size: 0.85rem;">
+                    📥 前往下载
+                </a>
+            </div>
+        </div>
+        <div class="link-note" style="text-align: center; margin-top: 0.8rem;">
+            ⚡ 公益包为免费版本，付费版包含更多机型及后续更新权益
+        </div>
+    </div>
+
+    <!-- 上车介绍 + 费用 -->
+    <div class="card" id="pricing">
+        <div class="section-title">🎫 上车介绍 & 费用说明</div>
+        <p style="margin-bottom: 1rem;">通过下方「上车介绍文档」了解详情，并填写「付费信息收集」表单，即可加入 Color Archive 移植计划。</p>
+        
+        <div class="price-grid">
+            <div class="price-card">
+                <div>📦 单包 + 更新</div>
+                <div class="price-number">20元</div>
+                <div class="price-desc">包含：当前版本刷机包 + 后续小版本更新</div>
+            </div>
+            <div class="price-card">
+                <div>🎁 双包</div>
+                <div class="price-number">30元</div>
+                <div class="price-desc">包含：两个不同机型/版本的刷机包 + 更新</div>
+            </div>
+        </div>
+        
+        <div style="background: rgba(0,0,0,0.3); border-radius: 1.2rem; padding: 1rem; margin-top: 0.5rem;">
+            <div style="font-weight: 600; margin-bottom: 0.8rem;">✨ 上车专享附加服务（半价优惠）</div>
+            <div class="service-item">
+                <span class="service-name">🔧 刷机服务</span>
+                <span class="service-price">20元（半价后）</span>
+            </div>
+            <div class="service-item">
+                <span class="service-name">🩹 救砖服务</span>
+                <span class="service-price">15元（半价后）</span>
+            </div>
+            <div style="font-size: 0.75rem; color: #9ca3af; margin-top: 0.8rem; text-align: center;">
+                * 仅上车用户可享此半价优惠
+            </div>
+        </div>
+    </div>
+
+    <!-- 基础要求 -->
+    <div class="card">
+        <div class="section-title">⚙️ 基础要求</div>
+        <div class="qa-answer" style="padding-left: 1rem;">
+            <p>1️⃣ 可解锁 BootLoader 的机型<br>
+            2️⃣ 2020 年后发布的产品<br>
+            3️⃣ ab/abb 分区类型<br>
+            4️⃣ 有一定用户量支持<br>
+            5️⃣ 可提供机子供测试（借用或捐赠形式）</p>
+        </div>
+    </div>
+
+    <!-- FAQ 核心问题 -->
+    <div class="card" id="faq">
+        <div class="section-title">❓ 常见问题</div>
+        <div class="qa-item"><div class="qa-question">🔧 安装 Color Archive 会去除云控吗？</div><div class="qa-answer">ColorOS 云控策略比较分散，无法针对特定需求修改，保留云控有助于后续新功能适配。</div></div>
+        <div class="qa-item"><div class="qa-question">📦 镜像上传要求？TWRP 可刷？</div><div class="qa-answer">不可以。需要专用方式刷入。</div></div>
+        <div class="qa-item"><div class="qa-question">⏳ 上车后多久收到包？发到哪里？</div><div class="qa-answer">时间不定，因网络原因可能提前或推迟。完成后通过填写的邮箱发送，请勿频繁催促。</div></div>
+        <div class="qa-item"><div class="qa-question">🔄 后续能免费更新吗？</div><div class="qa-answer">可以。每个小版本（如 16.0.1 → 16.0.3）更新时需重新“上车”。</div></div>
+        <div class="qa-item"><div class="qa-question">📱 刷完后可以回锁 BootLoader 吗？</div><div class="qa-answer">不能，Color Archive 属于第三方系统。</div></div>
+        <div class="qa-item"><div class="qa-question">🆙 刷完后收到官方 OTA 推送，能升级吗？</div><div class="qa-answer">可以。流程：下载官方 ISO → 解压 → 进入命令行 → 运行 <code style="background:#00000040;padding:2px 6px;border-radius:8px;">coloros_install.sh</code> → 重启。</div></div>
+    </div>
+
+    <!-- 设备支持状态 -->
+    <div class="card">
+        <div class="section-title">📱 设备支持状态</div>
+        <div style="margin-bottom: 1rem;">
+            <div style="font-size: 0.85rem; color: #9ca3af; margin-bottom: 0.5rem;">✅ 当前支持机型</div>
+            <div class="device-list">
+                <span class="device-tag support">OnePlus 9RT</span>
+                <span class="device-tag support">Realme GT</span>
+            </div>
+        </div>
+        <div class="provide-section">
+            <div style="font-size: 0.9rem; margin-bottom: 0.3rem;">📢 你的机型不在列表中？</div>
+            <div style="font-size: 0.8rem; color: #9ca3af; margin-bottom: 0.5rem;">欢迎提供测试机，加速适配进度</div>
+            <a href="https://docs.qq.com/form/page/DUVFvS29PT05URXBN" target="_blank" rel="noopener noreferrer" class="provide-btn">
+                ✍️ 提供你的机型（填写付费信息收集）
+            </a>
+        </div>
+        <div style="font-size:0.8rem; margin-top: 1rem; color:#6c7293; text-align: center;">
+            * 更多机型适配中，请关注后续动态
+        </div>
+    </div>
+
+    <!-- 刷入失败排查 -->
+    <div class="card">
+        <div class="section-title">⚠️ 刷入失败？</div>
+        <div class="qa-question">为什么无法正常启动？</div>
+        <div class="qa-answer">可能原因：网络问题、存储空间不足、系统文件损坏、软件冲突。建议参考社区讨论或官方文档。</div>
+    </div>
+
+    <!-- 底部双入口 -->
+    <div style="text-align: center; margin: 1.5rem 0 0.5rem;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+            <a href="https://docs.qq.com/doc/DUVJLeGxEVXZ5Z2JW#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                📖 上车介绍文档
+            </a>
+            <a href="https://docs.qq.com/form/page/DUVFvS29PT05URXBN" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                📋 付费信息收集
+            </a>
+        </div>
+        <p style="font-size: 0.8rem; margin-top: 1rem; color: #6c7293;">
+            先阅读「上车介绍文档」了解详情，再填写「付费信息收集」表单
+        </p>
+    </div>
+
+    <footer>
+        Color Archive · 移植与官改项目 | 尊重原创，理性交流<br>
+        公益包免费下载，付费版含后续更新及技术支持 | 酷安：不知道是不知道啊
+    </footer>
+</div>
+</body>
+</html>
