@@ -225,7 +225,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 1.5rem;
+            margin: 1rem 0;
         }
 
         .device-tag {
@@ -243,34 +243,26 @@
             color: #4ade80;
         }
 
-        .provide-section {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 1.2rem;
-            padding: 1.2rem;
-            margin-top: 1rem;
+        .qr-container {
             text-align: center;
-            border: 1px dashed rgba(255,255,255,0.2);
+            margin: 1rem 0;
         }
 
-        .provide-btn {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            color: #c4b5fd;
-            text-decoration: none;
+        .qr-img {
+            max-width: 200px;
+            width: 100%;
+            border-radius: 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: white;
+            padding: 0.5rem;
+        }
+
+        .payment-note {
+            font-size: 0.8rem;
+            color: #f0abfc;
             margin-top: 0.5rem;
-            transition: all 0.2s;
         }
 
-        .provide-btn:hover {
-            background: rgba(139, 92, 246, 0.3);
-            border-color: #8b5cf6;
-        }
-
-        /* QQ群卡片样式 */
         .qq-card {
             background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(139, 92, 246, 0.2));
             border: 1px solid rgba(139, 92, 246, 0.4);
@@ -319,7 +311,7 @@
         <div class="tagline">基于 ColorOS · realmeUI · OxygenOS 的移植与官改融合</div>
         <div class="btn-group">
             <a href="https://docs.qq.com/doc/DUVJLeGxEVXZ5Z2JW#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                📖 点击上车
+                📖 上车介绍 & 费用说明
             </a>
             <a href="https://docs.qq.com/form/page/DUVFvS29PT05URXBN" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
                 📋 付费信息收集
@@ -330,7 +322,7 @@
         </div>
     </div>
 
-    <!-- QQ群组件（首页） -->
+    <!-- QQ群组件 -->
     <div class="qq-card">
         <div style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.3rem;">💬 加入交流群</div>
         <div style="font-size: 0.8rem; color: #9ca3af; margin-bottom: 0.8rem;">反馈问题 · 获取资源 · 交流讨论</div>
@@ -350,14 +342,14 @@
         </ul>
         <div class="qa-item" style="border-bottom: none; margin-bottom: 0;">
             <div class="qa-question">🧑‍🤝‍🧑 Color Archive 有团队支撑吗？</div>
-            <div class="qa-answer">9RT：3人（bzdsbzda、B.lu、nby）<br>GT/VS：bzdsbzda B.lu（nby辅助，含技术支持）</div>
+            <div class="qa-answer">9RT：3人（我、B.lu、nby）<br>GT/VS：bzdsbzda B.lu（nby辅助，技术支持）</div>
         </div>
     </div>
 
     <!-- 公益包下载 -->
     <div class="card">
         <div class="section-title">🎁 公益包下载</div>
-        <p style="margin-bottom: 0.8rem;">免费公开版本，适用于以下机型：<strong>OnePlus 9RT / realme GT</strong> 等</p>
+        <p style="margin-bottom: 0.8rem;">免费公开版本，适用于以下机型：<strong>OnePlus 9RT / realme GT / Realme GT2 / Realme GT2 Pro / OnePlus 8T</strong> 等</p>
         <div class="download-grid">
             <div class="download-card">
                 <div>🌐 海外镜像</div>
@@ -379,11 +371,51 @@
         </div>
     </div>
 
+    <!-- 设备支持状态（已新增3个机型） -->
+    <div class="card">
+        <div class="section-title">📱 设备支持状态</div>
+        <div style="margin-bottom: 0.5rem;">
+            <div style="font-size: 0.85rem; color: #9ca3af;">✅ 当前支持机型</div>
+            <div class="device-list">
+                <span class="device-tag support">OnePlus 9RT</span>
+                <span class="device-tag support">Realme GT</span>
+                <span class="device-tag support">Realme GT2</span>
+                <span class="device-tag support">Realme GT2 Pro</span>
+                <span class="device-tag support">OnePlus 8T</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 付款码（上车） -->
+    <div class="card">
+        <div class="section-title">💳 付款码（上车）</div>
+        <div class="qr-container">
+            <img src="payment-qr.jpg" alt="付款码" class="qr-img" onerror="this.style.display='none'; this.nextSibling.style.display='block';">
+            <p style="display: none; color: #f0abfc;">请上传付款码图片，文件名为 payment-qr.jpg</p>
+            <div class="payment-note">💰 付款后截图保存，填写下方「付费信息收集」表单时上传凭证</div>
+        </div>
+    </div>
+
+    <!-- 付费信息收集 -->
+    <div class="card">
+        <div class="section-title">📋 付费信息收集</div>
+        <p style="margin-bottom: 1rem;">先阅读「上车介绍文档」了解详情，再填写「付费信息收集」表单。</p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+            <a href="https://docs.qq.com/doc/DUVJLeGxEVXZ5Z2JW#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                📖 上车介绍文档
+            </a>
+            <a href="https://docs.qq.com/form/page/DUVFvS29PT05URXBN" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                📋 付费信息收集
+            </a>
+        </div>
+        <p style="font-size: 0.8rem; margin-top: 1rem; color: #6c7293; text-align: center;">
+            填写时请上传付款截图，提交后请留意邮箱通知
+        </p>
+    </div>
+
     <!-- 上车介绍 + 费用 -->
     <div class="card" id="pricing">
-        <div class="section-title">🎫 上车介绍 & 费用说明</div>
-        <p style="margin-bottom: 1rem;">通过下方「上车介绍文档」了解详情，并填写「付费信息收集」表单，即可加入 Color Archive 移植计划。</p>
-        
+        <div class="section-title">🎫 上车费用说明</div>
         <div class="price-grid">
             <div class="price-card">
                 <div>📦 单包 + 更新</div>
@@ -396,7 +428,6 @@
                 <div class="price-desc">包含：两个不同机型/版本的刷机包 + 更新</div>
             </div>
         </div>
-        
         <div style="background: rgba(0,0,0,0.3); border-radius: 1.2rem; padding: 1rem; margin-top: 0.5rem;">
             <div style="font-weight: 600; margin-bottom: 0.8rem;">✨ 上车专享附加服务（半价优惠）</div>
             <div class="service-item">
@@ -425,37 +456,15 @@
         </div>
     </div>
 
-    <!-- FAQ 核心问题 -->
+    <!-- FAQ（已修改云控表述） -->
     <div class="card" id="faq">
         <div class="section-title">❓ 常见问题</div>
-        <div class="qa-item"><div class="qa-question">🔧 安装 Color Archive 会去除云控吗？</div><div class="qa-answer">ColorOS 云控策略特别分散，无法针对特定需求修改，保留云控有助于后续新功能适配。</div></div>
+        <div class="qa-item"><div class="qa-question">🔧 安装 Color Archive 会去除云控吗？</div><div class="qa-answer">ColorOS 云控策略比较分散，无法针对特定需求修改，保留云控有助于后续新功能适配。</div></div>
         <div class="qa-item"><div class="qa-question">📦 镜像上传要求？TWRP 可刷？</div><div class="qa-answer">不可以。需要专用方式刷入。</div></div>
         <div class="qa-item"><div class="qa-question">⏳ 上车后多久收到包？发到哪里？</div><div class="qa-answer">时间不定，因网络原因可能提前或推迟。完成后通过填写的邮箱发送，请勿频繁催促。</div></div>
         <div class="qa-item"><div class="qa-question">🔄 后续能免费更新吗？</div><div class="qa-answer">可以。每个小版本（如 16.0.1 → 16.0.3）更新时需重新“上车”。</div></div>
         <div class="qa-item"><div class="qa-question">📱 刷完后可以回锁 BootLoader 吗？</div><div class="qa-answer">不能，Color Archive 属于第三方系统。</div></div>
-        <div class="qa-item"><div class="qa-question">🆙 刷完后收到官方 OTA 推送，能升级吗？</div><div class="qa-answer">可以。</div></div>
-    </div>
-
-    <!-- 设备支持状态 -->
-    <div class="card">
-        <div class="section-title">📱 设备支持状态</div>
-        <div style="margin-bottom: 1rem;">
-            <div style="font-size: 0.85rem; color: #9ca3af; margin-bottom: 0.5rem;">✅ 当前支持机型</div>
-            <div class="device-list">
-                <span class="device-tag support">OnePlus 9RT</span>
-                <span class="device-tag support">Realme GT</span>
-            </div>
-        </div>
-        <div class="provide-section">
-            <div style="font-size: 0.9rem; margin-bottom: 0.3rem;">📢 你的机型不在列表中？</div>
-            <div style="font-size: 0.8rem; color: #9ca3af; margin-bottom: 0.5rem;">欢迎提供测试机，加速适配进度</div>
-            <a href="https://docs.qq.com/form/page/DUVFvS29PT05URXBN" target="_blank" rel="noopener noreferrer" class="provide-btn">
-                ✍️ 提供你的机型（填写付费信息收集）
-            </a>
-        </div>
-        <div style="font-size:0.8rem; margin-top: 1rem; color:#6c7293; text-align: center;">
-            * 更多机型适配中，请关注后续动态
-        </div>
+        <div class="qa-item"><div class="qa-question">🆙 刷完后收到官方 OTA 推送，能升级吗？</div><div class="qa-answer">可以。流程：下载官方 ISO → 解压 → 进入命令行 → 运行 <code style="background:#00000040;padding:2px 6px;border-radius:8px;">coloros_install.sh</code> → 重启。</div></div>
     </div>
 
     <!-- 刷入失败排查 -->
@@ -465,25 +474,9 @@
         <div class="qa-answer">可能原因：网络问题、存储空间不足、系统文件损坏、软件冲突。建议参考社区讨论或官方文档。</div>
     </div>
 
-    <!-- 底部双入口 -->
-    <div style="text-align: center; margin: 1.5rem 0 0.5rem;">
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
-            <a href="https://docs.qq.com/doc/DUVJLeGxEVXZ5Z2JW#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                📖 付款码（上车）
-            </a>
-            <a href="https://docs.qq.com/form/page/DUVFvS29PT05URXBN" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                📋 付费信息收集
-            </a>
-        </div>
-        <p style="font-size: 0.8rem; margin-top: 1rem; color: #6c7293;">
-            先阅读「上车介绍文档」了解详情，再填写「付费信息收集」表单
-        </p>
-    </div>
-
     <footer>
         Color Archive · 移植与官改项目 | 尊重原创，理性交流<br>
-        公益包免费下载，付费版含后续更新及技术支持 | 酷安：不知道是不知道啊
-        Color OS port Hub团队作品
+        公益包免费下载，付费版含后续更新及技术支持 | 酷安：不知道是不知道啊 Color OS port Hub团队作品
     </footer>
 </div>
 
